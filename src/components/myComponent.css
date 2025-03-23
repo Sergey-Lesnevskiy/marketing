@@ -1,0 +1,44 @@
+.wrapper_board {
+  margin: 0 auto;
+  max-width: 1900px;
+}
+.wrapper_board > h1{
+  text-align: center;
+}
+.url_product{
+  word-break:break-all;
+  font-size: 13px;
+}
+.list_cards {
+  max-width: 870px;
+  margin: 0 auto;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.item_card{
+  width: 150px;
+  height: 160px;
+  border: 1px solid rgb(65, 68, 97);
+  padding: 5px;
+  transition: .5s ease;
+  position: relative;
+}
+.item_card:hover{
+  cursor: pointer;
+  scale: 1.05;
+}
+.item_card:hover::after{
+  content: 'кликни на меня';
+  width: 75px;
+  position: absolute;
+  padding: 1px;
+  top: 0px;
+  left: 50%;
+  font-size: 10px;
+  transform: translate(-50%,0 );
+  border: 1px solid rgba(22, 22, 22, 0.55);
+  border-radius: 10px;
+}

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { fetchProduct } from "../api/productService"; // Импортируем функцию
 import { Product } from "../interface/interface";
+import './myComponent.css'
 
 const MyComponent: React.FC = () => {
   const [products, setProducts] = useState<Product[]>([]);
@@ -30,12 +31,13 @@ const MyComponent: React.FC = () => {
   if (error) return <div>Error: {error}</div>;
 
   return (
-    <div>
+    <div className="wrapper_board">
       <h1>Products</h1>
-      <ul>
+      <ul className="list_cards">
         {products.map((product) => (
-          <li key={product.id}>
-            {product.id} - ${product.title}
+          <li key={product.id} className="item_card">
+            <p>Ссылка на продукт: <span className="url_product">{product.url}</span></p>
+            <p>Id продукта: <span>{product.id}</span></p>
           </li>
         ))}
       </ul>
