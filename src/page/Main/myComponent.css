@@ -1,6 +1,7 @@
 .wrapper_board {
   margin: 0 auto;
   max-width: 1900px;
+  margin-bottom: 10px;
 }
 .wrapper_board > h1{
   text-align: center;

@@ -1,0 +1,11 @@
+.nav{
+  display: flex;
+  justify-content: center;
+  color: white;
+  background-color: rgb(27, 36, 92);
+}
+.nav> a{
+  margin-right: 10px;
+  font-size: 20px;
+  color: white;
+}

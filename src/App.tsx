@@ -1,6 +1,7 @@
 import React from 'react';
 // import MyComponent from './components/myComponent';
-import MyHeader from './components/myHeader';
+import MyHeader from './components/Header/myHeader';
+import Footer from './components/Footer/Footer';
 import AppRouter from './components/AppRouter';
 
 const App: React.FC = () => {
@@ -8,6 +9,7 @@ const App: React.FC = () => {
         <>
             <MyHeader />
             <AppRouter />
+            <Footer />
         </>
     );
 };
