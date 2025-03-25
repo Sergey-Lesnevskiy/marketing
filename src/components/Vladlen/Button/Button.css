@@ -1,6 +1,6 @@
 .button{
   padding: .8rem 2rem;
-  border: none;
+  border: 1px solid #aeaeae;
   border-radius: 5px;
   cursor: pointer;
   transition: all .3s;
@@ -10,8 +10,14 @@
 }
 .button:hover{
   opacity: .8;
+  border-color: #646cff;
 }
 .button.active{
   background-color: #3e6ae1;
   color: #fff;
+}
+.button:disabled{
+  cursor: not-allowed;
+  border-color: rgb(46, 25, 25);
+  /* background-color: rgb(229, 24, 24); */
 }

@@ -1,0 +1,16 @@
+.userList {
+  list-style-type: none; /* Убираем точки списка */
+  padding: 0;  /* Убираем паддинги */
+  margin: 20px; /* Задаем отступы сверху и снизу */
+}
+
+.userItem {
+  background-color: #f9f9f9; /* Цвет фона элемента */
+  border: 1px solid #ddd; /* Рамка */
+  border-radius: 8px; /* Закругление углов */
+  padding: 15px; /* Паддинг внутри элемента */
+  margin-bottom: 10px; /* Отступ снизу между элементами */
+  display: flex; 
+  flex-direction: column;  /* Вертикальное выравнивание */
+  transition: transform 0.2s; /* Плавный эффект при наведении */
+}

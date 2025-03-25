@@ -8,17 +8,22 @@ const MyHeader: React.FC = () => {
   const [now, setNow] = useState(new Date());
   // const now = new Date();
   useEffect(()=>{
-    setInterval(()=>{
+    const interval = setInterval(()=>{
       setNow(new Date())
     },1000);
-  })
+
+    // очистка памяти return
+    return ()=>{
+      clearInterval(interval);
+    }
+  },[])
   return (
     <header className={classes.header}>
       <div className={classes.logo}>
         <img src={logo} alt="" />
       </div>
       <Navigation />
-      <div className={classes.logo}>Время: {now.toLocaleTimeString()}</div>
+      <div className={classes.time}>Время: {now.toLocaleTimeString()}</div>
     </header>
   );
 };

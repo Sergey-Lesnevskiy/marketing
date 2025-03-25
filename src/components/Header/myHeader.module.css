@@ -19,3 +19,9 @@ img{
   background-color: rgb(156, 158, 193);
   border-radius: 62%;
 }
+.time{
+  width: 150px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+}
