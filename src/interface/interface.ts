@@ -17,6 +17,7 @@ export interface ButtonProps {
   children?: React.ReactNode;
   isActive?: boolean;
   disabled?: boolean;
+  id?:string;
 }
 export interface SecondSectionProps {
   handleClick: (param: string) => void;

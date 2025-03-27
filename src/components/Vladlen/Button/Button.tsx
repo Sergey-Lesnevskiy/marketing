@@ -7,6 +7,7 @@ const Button: React.FC<ButtonProps> = ({
   onClick,
   isActive,
   disabled,
+  id,
 }) => {
   // function handelClick() {
   //   console.log("click");
@@ -16,7 +17,8 @@ const Button: React.FC<ButtonProps> = ({
     <>
       {text && (
         <button
-        disabled={disabled}
+          id={id}
+          disabled={disabled}
           className={isActive ? "button active" : "button"}
           onClick={onClick}
         >
@@ -25,7 +27,8 @@ const Button: React.FC<ButtonProps> = ({
       )}
       {children && (
         <button
-        disabled={disabled}
+          id={id}
+          disabled={disabled}
           className={isActive ? "button active" : "button"}
           onClick={onClick}
         >

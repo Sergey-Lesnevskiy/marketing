@@ -8,10 +8,10 @@
   margin-right: 1rem;
 
 }
-.button:hover{
+/* .button:hover{
   opacity: .8;
   border-color: #646cff;
-}
+} */
 .button.active{
   background-color: #3e6ae1;
   color: #fff;
@@ -20,4 +20,22 @@
   cursor: not-allowed;
   border-color: rgb(46, 25, 25);
   /* background-color: rgb(229, 24, 24); */
+}
+.button:hover {
+  animation: 0.2s ease-out 0s 1 normal none running hbBjdE;
+  opacity: .8;
+  border-color: #646cff;
+}
+@keyframes hbBjdE{
+0% {
+  transform: scale(1);
+}
+
+50% {
+  transform: scale(1.03);
+}
+
+100% {
+  transform: scale(1);
+}
 }

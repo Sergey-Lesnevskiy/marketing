@@ -4,12 +4,14 @@ import { fetchProduct } from "../../api/productService"; // Импортируе
 import { Product } from "../../interface/interface";
 import './myComponent.css';
 import Card from "../../components/Card/Card";
+import Modal from "../../components/Vladlen/Modal/Modal";
 
 const MyComponent: React.FC = () => {
     const [products, setProducts] = useState<Product[]>([]);
     const [loading, setLoading] = useState<boolean>(true);
     const [error, setError] = useState<string | null>(null);
-
+    const [modal, setModal] = useState(false);
+    const [numItem, setNumItem] = useState(0)
     const path = "https://jsonplaceholder.typicode.com/photos/?_limit=10";
 
     const loadProduct = async () => {
@@ -26,7 +28,9 @@ const MyComponent: React.FC = () => {
             setLoading(false);
         }
     };
-
+    function toggleModal() {
+      setModal((prev) => !prev);
+    }
     useEffect(() => {
         loadProduct();
     }, []);
@@ -36,6 +40,8 @@ const MyComponent: React.FC = () => {
       if (target.tagName === "LI"|| target.closest('li')?.tagName === 'LI') { // Проверяем, является ли кликнутый элемент <li>
           const clickedId = target.getAttribute('data-id'); // Получаем id из атрибута data-id
           console.log(`Клик по элементу с ID: ${clickedId}`);
+          setNumItem(Number(clickedId)-1);
+          toggleModal();
       }
   };
     if (loading) return <div>Loading...</div>;
@@ -49,6 +55,12 @@ const MyComponent: React.FC = () => {
                     <Card key={product.id} productCard={product} />
                 ))}
             </ul>
+            <Modal open={modal} toggleModal={toggleModal}>
+        <h3>ID product: {products[numItem].id}</h3>
+        <p>
+          {products[numItem].title}
+        </p>
+      </Modal>
         </main>
     );
 };
