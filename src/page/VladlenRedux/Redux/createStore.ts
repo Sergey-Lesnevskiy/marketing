@@ -1,5 +1,6 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { DECREMENT, INCREMENT } from "./type";
+import { TypedUseSelectorHook, useDispatch, useSelector, useStore } from "react-redux";
 
 type CounterState = {
   counter: number;
@@ -65,5 +66,15 @@ export const store = configureStore({
   reducer: reducer,
 });
 
+export const selectCounter = (state: AppState, counterId: CounterId) => state.counters[counterId]
+export type AppState = ReturnType<typeof store.getState>;
+export type AddDispatch = typeof store.dispatch;
 
-export type AppState = ReturnType<typeof store.getState>
+// export const useAppSelector = useSelector.withTypes<AppState>()
+export const useAppSelector: TypedUseSelectorHook<AppState> = useSelector;
+export const useAppDispatch: TypedUseSelectorHook<AddDispatch> = useDispatch;
+// export const useAppStore: TypedUseSelectorHook<typeof store> = useStore;
+export const useAppStore = () => {
+  const store = useStore<AppState>();
+  return store;
+};

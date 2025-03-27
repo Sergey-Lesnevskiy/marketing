@@ -1,8 +1,9 @@
 // import { useState } from "react";
-import { useEffect, useReducer, useRef } from "react";
+// import { useEffect, useReducer, useRef } from "react";
 import Button from "../../components/Vladlen/Button/Button";
-import { AppState, CounterId, DecrementAction, IncrementAction, store } from "./Redux/createStore";
+import { CounterId, DecrementAction, IncrementAction, selectCounter, useAppSelector } from "./Redux/createStore";
 import { DECREMENT, INCREMENT } from "./Redux/type";
+import { useDispatch } from "react-redux";
 // import { createStore } from "./Redux/createStore";
 // // import {createStore} from 'redux';
 // import { rootReducer } from "./Redux/rootReducer";
@@ -48,33 +49,43 @@ const VladlenRedux: React.FC = () => {
   );
 };
 
-const selectCounter = (state: AppState, counterId: CounterId) => state.counters[counterId]
+
 
 export function Counter({counterId}:{counterId: CounterId}){
-  const [,forceUpdate] = useReducer((x)=>x+1,0);
-  console.log('render',counterId);
+  const dispatch = useDispatch()
+    console.log('render',counterId);
+  // useStore
+  // useSelector
+//   const [,forceUpdate] = useReducer((x)=>x+1,0);
   
-// получаем laststate черег ref
+// // получаем laststate черег ref
 
-const lastStateRef = useRef<ReturnType<typeof selectCounter>>(undefined);
+// const lastStateRef = useRef<ReturnType<typeof selectCounter>>(undefined);
 
-  useEffect(()=>{
-    // мы не можем подписаться на изменения кусочка состояния
-    // при иммутабельном обновлении нужно сравнить ссылки
-    // точечное обновление в редакс
-    // рендер только измененного компонента
-  const unsubscride = store.subscribe(()=>{
-    const currentState = selectCounter(store.getState(),counterId);
-    const lastState = lastStateRef.current;
-    if(currentState!==lastState){
-      console.log(true);
-      forceUpdate();
-    }
-    lastStateRef.current = currentState;
-  })
-  return unsubscride;
-  },[]);
-  const counterState = selectCounter(store.getState(),counterId);
+//   useEffect(()=>{
+//     // мы не можем подписаться на изменения кусочка состояния
+//     // при иммутабельном обновлении нужно сравнить ссылки
+//     // точечное обновление в редакс
+//     // рендер только измененного компонента
+//   const unsubscride = store.subscribe(()=>{
+//     const currentState = selectCounter(store.getState(),counterId);
+//     const lastState = lastStateRef.current;
+//     if(currentState!==lastState){
+//       console.log(true);
+//       forceUpdate();
+//     }
+//     lastStateRef.current = currentState;
+//   })
+//   return unsubscride;
+//   },[]);
+
+// оставили для сравнения с react-redux 
+
+// оставили для сравнения с react-redux 
+
+
+  // const counterState =  useAppSelector((state)=>state.counters[counterId]);
+  const counterState =  useAppSelector((state)=>selectCounter(state,counterId));
 
 
   return(
@@ -82,10 +93,10 @@ const lastStateRef = useRef<ReturnType<typeof selectCounter>>(undefined);
     <h5>
         Счетчик: <span id="counter">{counterState?.counter}</span>
       </h5>
-      <Button id="add" onClick={()=>{store.dispatch({type:INCREMENT,payload:{counterId}} satisfies IncrementAction)}}>
+      <Button id="add" onClick={()=>{dispatch({type:INCREMENT,payload:{counterId}} satisfies IncrementAction)}}>
         Добавить
       </Button>
-      <Button id="sub" onClick={()=>{store.dispatch({type:DECREMENT,payload:{counterId}} satisfies DecrementAction)}}>
+      <Button id="sub" onClick={()=>{dispatch({type:DECREMENT,payload:{counterId}} satisfies DecrementAction)}}>
         Убрать
       </Button>
     </>
